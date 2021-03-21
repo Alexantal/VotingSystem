@@ -1,23 +1,43 @@
-DELETE FROM user_roles;
-DELETE FROM meals;
-DELETE FROM users;
-ALTER SEQUENCE global_seq RESTART WITH 100000;
+DELETE FROM USER_ROLES;
+DELETE FROM VOTES;
+DELETE FROM DISHES;
+DELETE FROM RESTAURANTS;
+DELETE FROM USERS;
+ALTER SEQUENCE global_seq RESTART WITH 1;
 
-INSERT INTO users (name, email, password)
-VALUES ('User', 'user@yandex.ru', 'password'),
-       ('Admin', 'admin@gmail.com', 'admin');
+INSERT INTO USERS (NAME, EMAIL, PASSWORD, REGISTERED)
+VALUES ('User1', 'user1@yandex.ru', 'password', '2021-01-10'),
+       ('User2', 'user2@yandex.ru', 'password', '2021-01-10'),
+       ('User3', 'user3@yandex.ru', 'password', '2021-01-10'),
+       ('User4', 'user4@yandex.ru', 'password', '2021-01-10'),
+       ('Admin', 'admin@gmail.com', 'admin', '2021-01-10');
+
+INSERT INTO RESTAURANTS (NAME, REGISTERED)
+VALUES ('Astoria', '2015-01-01'),
+       ('Legend', '2015-02-01'),
+       ('France', '2015-03-01');
+
+INSERT INTO DISHES (NAME, PRICE, DATE, RESTAURANT_ID)
+VALUES ('Red soup', 200, '2021-01-10', 6),
+       ('Greek salad', 150, '2021-01-10', 6),
+       ('Lemon tea', 100, '2021-01-10', 6),
+       ('Green soup', 200, '2021-01-10', 7),
+       ('Fresh salad', 150, '2021-01-10', 7),
+       ('Black coffee', 150, '2021-01-10', 7),
+       ('Chicken soup', 200, '2021-01-10', 8),
+       ('Caret salad', 100, '2021-01-10', 8),
+       ('Black tea', 100, '2021-01-10', 8);
+
+INSERT INTO VOTES (RESTAURANT_ID, USER_ID, DATE)
+VALUES (6, 1, '2021-01-10'),
+       (6, 2, '2021-01-10'),
+       (7, 3, '2021-01-10'),
+       (8, 4, '2021-01-10');
 
 INSERT INTO user_roles (role, user_id)
-VALUES ('USER', 100000),
-       ('ADMIN', 100001);
+VALUES ('USER', 1),
+       ('USER', 2),
+       ('USER', 3),
+       ('USER', 4),
+       ('ADMIN', 5);
 
-INSERT INTO meals (date_time, description, calories, user_id)
-VALUES ('2020-01-30 10:00:00', 'Завтрак', 500, 100000),
-       ('2020-01-30 13:00:00', 'Обед', 1000, 100000),
-       ('2020-01-30 20:00:00', 'Ужин', 500, 100000),
-       ('2020-01-31 0:00:00', 'Еда на граничное значение', 100, 100000),
-       ('2020-01-31 10:00:00', 'Завтрак', 500, 100000),
-       ('2020-01-31 13:00:00', 'Обед', 1000, 100000),
-       ('2020-01-31 20:00:00', 'Ужин', 510, 100000),
-       ('2020-01-31 14:00:00', 'Админ ланч', 510, 100001),
-       ('2020-01-31 21:00:00', 'Админ ужин', 1500, 100001);
