@@ -1,12 +1,22 @@
 package ru.graduation.topjava.model;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
+
+    @NotBlank
+    @Size(min = 2, max = 100)
+    @Column(name = "name", nullable = false)
     protected String name;
 
-    protected AbstractNamedEntity() {
+    public AbstractNamedEntity() {
     }
 
-    protected AbstractNamedEntity(Integer id, String name) {
+    public AbstractNamedEntity(Integer id, String name) {
         super(id);
         this.name = name;
     }
@@ -21,6 +31,7 @@ public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 
     @Override
     public String toString() {
-        return super.toString() + '(' + name + ')';
+        return getClass().getSimpleName() + ':' + id +
+                '(' + name + ')';
     }
 }
