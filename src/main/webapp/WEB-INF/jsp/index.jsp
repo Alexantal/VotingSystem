@@ -2,10 +2,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
-<head>
-    <title>Title</title>
-</head>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
-
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<br>
+<section>
+    <form method="post" action="users">
+        <spring:message code="app.login"/>: <select name="userId">
+        <option value="1" selected>User</option>
+        <option value="5">Admin</option>
+    </select>
+        <button type="submit"><spring:message code="common.select"/></button>
+    </form>
+</section>
+<jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>
