@@ -1,4 +1,4 @@
-package ru.graduation.topjava.repository;
+package ru.graduation.topjava.repository.user;
 
 import ru.graduation.topjava.model.User;
 

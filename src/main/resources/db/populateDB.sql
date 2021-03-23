@@ -25,7 +25,7 @@ VALUES ('Red soup', 200, '2021-01-10', 6),
        ('Fresh salad', 150, '2021-01-10', 7),
        ('Black coffee', 150, '2021-01-10', 7),
        ('Chicken soup', 200, '2021-01-10', 8),
-       ('Caret salad', 100, '2021-01-10', 8),
+       ('Carrot salad', 100, '2021-01-10', 8),
        ('Black tea', 100, '2021-01-10', 8);
 
 INSERT INTO VOTES (RESTAURANT_ID, USER_ID, DATE)

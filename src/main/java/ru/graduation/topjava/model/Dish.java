@@ -15,7 +15,7 @@ public class Dish extends AbstractNamedEntity {
     @Range(min = 10, max = 5000)
     private Integer price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id", nullable = false)
     @NotNull
     private Restaurant restaurant;

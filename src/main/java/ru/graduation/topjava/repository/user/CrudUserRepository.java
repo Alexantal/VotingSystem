@@ -1,4 +1,4 @@
-package ru.graduation.topjava.repository;
+package ru.graduation.topjava.repository.user;
 
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

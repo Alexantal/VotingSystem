@@ -2,7 +2,7 @@ package ru.graduation.topjava.service;
 
 import org.springframework.stereotype.Service;
 import ru.graduation.topjava.model.User;
-import ru.graduation.topjava.repository.UserRepository;
+import ru.graduation.topjava.repository.user.UserRepository;
 
 import java.util.List;
 
