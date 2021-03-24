@@ -19,7 +19,7 @@
 
         <spring.version>5.3.4</spring.version>
         <spring-data-jpa.version>2.4.5</spring-data-jpa.version>
-        <tomcat.version>9.0.43</tomcat.version>
+        <tomcat.version>9.0.44</tomcat.version>
 
         <!-- Hibernate -->
         <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
@@ -43,12 +43,6 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.3.4</version>
-        </dependency>
-
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -77,9 +71,20 @@
 
         <!--Web-->
         <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-servlet-api</artifactId>
+        <version>${tomcat.version}</version>
+        <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.4</version>
         </dependency>
     </dependencies>
 </project>

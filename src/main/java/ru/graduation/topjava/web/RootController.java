@@ -4,16 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import ru.graduation.topjava.service.DishService;
 import ru.graduation.topjava.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RootController {
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private DishService dishService;
 
     @GetMapping("/")
     public String root() {
@@ -26,9 +26,10 @@ public class RootController {
         return "users";
     }
 
-    @GetMapping("dishes")
-    public String getMenu(Model model) {
-        model.addAttribute("dishes", dishService.getAll());
-        return "dishes";
+    @PostMapping("/users")
+    public String setUser(HttpServletRequest request) {
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        SecurityUtil.setAuthUserId(userId);
+        return userService.isAdmin(userId) ? "redirect:dishes/edit" : "redirect:dishes";
     }
 }
