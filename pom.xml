@@ -21,6 +21,10 @@
         <spring-data-jpa.version>2.4.5</spring-data-jpa.version>
         <tomcat.version>9.0.44</tomcat.version>
 
+        <!-- Logging -->
+        <logback.version>1.2.3</logback.version>
+        <slf4j.version>1.7.30</slf4j.version>
+
         <!-- Hibernate -->
         <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
         <hibernate.version>5.4.28.Final</hibernate.version>
@@ -43,6 +47,21 @@
     </build>
 
     <dependencies>
+        <!-- Logging with SLF4J & LogBack -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework.data</groupId>
