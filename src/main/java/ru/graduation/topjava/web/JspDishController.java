@@ -12,11 +12,11 @@ public class JspDishController {
     @Autowired
     private DishService dishService;
 
-    @GetMapping("/dishes")
-    public String getMenu(Model model) {
-        model.addAttribute("dishes", dishService.getAll());
-        return "dishes";
-    }
+    /*@GetMapping("/votingForm")
+    public String getMenu() {
+//        model.addAttribute("dishes", dishService.getAll());
+        return "votingForm";
+    }*/
 
     @GetMapping("/dishes/edit")
     public String getEditMenu(Model model) {

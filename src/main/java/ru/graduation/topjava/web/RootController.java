@@ -30,6 +30,6 @@ public class RootController {
     public String setUser(HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("userId"));
         SecurityUtil.setAuthUserId(userId);
-        return userService.isAdmin(userId) ? "redirect:dishes/edit" : "redirect:dishes";
+        return userService.isAdmin(userId) ? "redirect:dishes/edit" : "redirect:/menu";
     }
 }
