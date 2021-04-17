@@ -5,39 +5,51 @@
 
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
-<script type="text/javascript">
-    function operation(){
-        const td11 = document.getElementById('td11');
-        td11.innerHTML = "меню ресторана " + event.target.id;
-    }
-</script>
-
 <body>
+<script type="text/javascript" src="resources/js/common.js" defer></script>
+<script type="text/javascript" src="resources/js/dishes.js" defer></script>
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
-<table id="table1" width="100%" border=0 cellpadding="8" cellspacing="0">
-    <tr>
-        <td  width="30%" cellpadding="8" cellspacing="0">
-            <table id="table2" width="100%" border=0 cellpadding="8" cellspacing="0">
-                <c:forEach items="${restaurants}" var="restaurant">
-                    <jsp:useBean id="restaurant" type="ru.graduation.topjava.model.Restaurant"/>
-                    <tr>
-                        <td id = ${restaurant.id} onclick="operation()"><c:out value="${restaurant.name}"/></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </td>
-        <td  width="70%" cellpadding="8" cellspacing="0">
-            <table id="table3" width="100%" border=0 cellpadding="8" cellspacing="0">
-                <tr>
-                    <td id="td11" align="center">Выберете ресторан</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
-
+<div class="jumbotron pt-4">
+    <div class="container">
+        <table id="commonTable" width="100%" border=0 cellpadding="8" cellspacing="0">
+            <tr>
+                <td  width="20%" cellpadding="8" cellspacing="0">
+                    <form id="restForm">
+                        <table width="100%" border=0 cellpadding="8" cellspacing="0">
+                            <c:forEach items="${restaurants}" var="restaurant">
+                                <jsp:useBean id="restaurant" type="ru.graduation.topjava.model.Restaurant"/>
+                                <tr>
+                                    <td><a class="btn btn-primary" onclick="showMenu(${restaurant.id}, '${restaurant.name}')">${restaurant.name}</a></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </form>
+                </td>
+                <td  width="70%" cellpadding="8" cellspacing="0">
+                    <form id="menu">
+                        <table class="table table-striped" id="menuTable" width="70%" border=0 cellpadding="8" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th id="restaurantName">Text</th>
+                            </tr>
+                            <tr>
+                                <th><spring:message code="dish.name"/></th>
+                                <th><spring:message code="dish.price"/></th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td class="btn btn-primary" id="votingBtn" width="100px">Vote</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 <jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>

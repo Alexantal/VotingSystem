@@ -4,6 +4,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import ru.graduation.topjava.model.Dish;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -11,10 +12,10 @@ import java.util.List;
 public class DishRepositoryImpl implements DishRepository {
     private static final Sort SORT_DATE = Sort.by(Sort.Direction.DESC, "date");
 
-    private final CrudDishRepository dishRepository;
+    private final CrudDishRepository crudDishRepository;
 
-    public DishRepositoryImpl(CrudDishRepository dishRepository) {
-        this.dishRepository = dishRepository;
+    public DishRepositoryImpl(CrudDishRepository crudDishRepository) {
+        this.crudDishRepository = crudDishRepository;
     }
 
     @Override
@@ -39,6 +40,11 @@ public class DishRepositoryImpl implements DishRepository {
 
     @Override
     public List<Dish> getAll() {
-        return dishRepository.findAll(SORT_DATE);
+        return crudDishRepository.findAll(SORT_DATE);
+    }
+
+    @Override
+    public List<Dish> getRestaurantMenu(int rest_id, LocalDate date) {
+        return crudDishRepository.getRestaurantMenu(rest_id, date);
     }
 }

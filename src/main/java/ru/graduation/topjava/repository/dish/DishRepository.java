@@ -2,6 +2,7 @@ package ru.graduation.topjava.repository.dish;
 
 import ru.graduation.topjava.model.Dish;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface DishRepository {
     List<Dish> getByDate(Date date);
 
     List<Dish> getAll();
+
+    List<Dish> getRestaurantMenu(int rest_id, LocalDate date);
 }
