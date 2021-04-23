@@ -2,6 +2,7 @@ package ru.graduation.topjava.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -9,24 +10,24 @@ import java.util.Date;
         name = "votes_unique_user_date_idx")})
 public class Vote extends AbstractBaseEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id", nullable = false)
     @NotNull
     private Restaurant restaurant;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     @NotNull
     private User user;
 
     @Column(name = "date", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    private Date date;
+    private LocalDate date;
 
     public Vote() {
     }
 
-    public Vote(Integer id, Date date) {
+    public Vote(Integer id, LocalDate date) {
         super(id);
         this.date = date;
     }
@@ -39,7 +40,7 @@ public class Vote extends AbstractBaseEntity {
         return user;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -51,7 +52,7 @@ public class Vote extends AbstractBaseEntity {
         this.user = user;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -59,8 +60,8 @@ public class Vote extends AbstractBaseEntity {
     public String toString() {
         return "Vote{" +
                 "id=" + id +
-                ", restaurant=" + restaurant +
-                ", user=" + user +
+                ", user=" + user.getId() +
+                ", restaurant=" + restaurant.getId() +
                 ", date=" + date +
                 '}';
     }

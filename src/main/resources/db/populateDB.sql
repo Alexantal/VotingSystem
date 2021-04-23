@@ -37,11 +37,11 @@ VALUES ('Red soup', 200, now(), 6),
        ('Carrot salad', 100, '2021-01-10', 8),
        ('Black tea', 100, '2021-01-10', 8);
 
-INSERT INTO VOTES (RESTAURANT_ID, USER_ID, DATE)
-VALUES (6, 1, '2021-01-10'),
-       (6, 2, '2021-01-10'),
-       (7, 3, '2021-01-10'),
-       (8, 4, '2021-01-10');
+INSERT INTO VOTES (USER_ID, RESTAURANT_ID, DATE)
+VALUES (1, 6, '2021-01-10'),
+       (2, 6, '2021-01-10'),
+       (3, 7, '2021-01-10'),
+       (4, 8, '2021-01-10');
 
 INSERT INTO user_roles (role, user_id)
 VALUES ('USER', 1),

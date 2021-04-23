@@ -1,8 +1,7 @@
 package ru.graduation.topjava.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -10,5 +9,16 @@ import javax.persistence.UniqueConstraint;
 public class Restaurant extends AbstractEnabledEntity {
 
     public Restaurant() {
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    private List<Vote> votes;
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 }

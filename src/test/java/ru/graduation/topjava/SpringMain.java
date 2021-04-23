@@ -2,9 +2,10 @@ package ru.graduation.topjava;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.graduation.topjava.model.Dish;
-import ru.graduation.topjava.web.DishRestController;
+import ru.graduation.topjava.model.Vote;
+import ru.graduation.topjava.web.vote.VoteRestController;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,9 +18,16 @@ public class SpringMain {
             Arrays.stream(appCtx.getBeanDefinitionNames()).forEach(System.out::println);
             System.out.println("----------------------------------------------\n");
 
-            DishRestController dishRestController = appCtx.getBean(DishRestController.class);
+            VoteRestController voteRestController = appCtx.getBean(VoteRestController.class);
+//            voteRestController.create(new Vote(null, LocalDate.now()), 7);
+            voteRestController.update(new Vote(27, LocalDate.now()), 27, 7);
+
+            List<Vote> votes = voteRestController.getAll();
+            votes.forEach(System.out::println);
+
+            /*DishRestController dishRestController = appCtx.getBean(DishRestController.class);
             List<Dish> dishList = dishRestController.getTodayMenu(7);
-            dishList.forEach(System.out::println);
+            dishList.forEach(System.out::println);*/
 
             /*UserRestController userController = appCtx.getBean(UserRestController.class);
             List<User> userList = userController.getAll();
