@@ -40,7 +40,8 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <td class="btn btn-primary" id="votingBtn" width="100px">Vote</td>
+                                    <td class="btn btn-primary" id="votingBtn" width="100px"
+                                    onclick="vote()">Vote</td>
                                 </tr>
                             </tfoot>
                         </table>

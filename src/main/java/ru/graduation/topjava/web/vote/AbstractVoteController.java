@@ -18,17 +18,16 @@ public abstract class AbstractVoteController {
     @Autowired
     private VoteService service;
 
-    public Vote create(Vote vote, int restId) {
+    public void create(int restId) {
         int userId = SecurityUtil.authUserId();
-        log.info("create {} for user {}", vote, userId);
-        checkNew(vote);
-        return service.create(vote, userId, restId);
+        log.info("create new vote for user {}", userId);
+        service.create(new Vote(null, LocalDate.now()), userId, restId);
     }
 
-    public void update(Vote vote, int id, int restId) {
+    public void update(Vote vote, int restId) {
         int userId = SecurityUtil.authUserId();
         log.info("update {} for user {}", vote, userId);
-        assureIdConsistent(vote, id);
+//        assureIdConsistent(vote, id);
         service.update(vote, userId, restId);
     }
 
@@ -40,6 +39,12 @@ public abstract class AbstractVoteController {
     public List<Vote> getAll() {
         log.info("get All");
         return service.getAll();
+    }
+
+    public Vote getOneByDate(LocalDate date) {
+        int userId = SecurityUtil.authUserId();
+        log.info("get vote for userId: {} and date: {} ", userId, date);
+        return service.getByUserIdAndDate(userId, date);
     }
 
     public List<Vote> getAllByDate(LocalDate date) {

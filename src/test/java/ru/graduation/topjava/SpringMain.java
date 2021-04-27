@@ -19,8 +19,8 @@ public class SpringMain {
             System.out.println("----------------------------------------------\n");
 
             VoteRestController voteRestController = appCtx.getBean(VoteRestController.class);
-//            voteRestController.create(new Vote(null, LocalDate.now()), 7);
-            voteRestController.update(new Vote(27, LocalDate.now()), 27, 7);
+            voteRestController.createOrUpdate(7);
+            voteRestController.createOrUpdate(6);
 
             List<Vote> votes = voteRestController.getAll();
             votes.forEach(System.out::println);

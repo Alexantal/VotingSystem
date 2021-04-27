@@ -36,6 +36,10 @@ public class VoteService {
         return repository.getByIdAndUserId(id, userId);
     }
 
+    public Vote getByUserIdAndDate(int userId, LocalDate date) {
+        return repository.getByUserIdAndDate(userId, date);
+    }
+
     public List<Vote> getAll() {
         return repository.getAll();
     }

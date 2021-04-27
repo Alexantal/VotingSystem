@@ -1,16 +1,9 @@
 const dishAjaxUrl = "rest/dishes/";
 let restId;
+let restaurantName;
 // https://stackoverflow.com/a/5064235/548473
 const ctx = {
     ajaxUrl: dishAjaxUrl
-    /*,
-    updateTable: function () {
-        $.ajax({
-            type: "GET",
-            url: "rest/dishes/menu",
-            data: $("#restForm").serialize()
-        }).done(updateTableByData);
-    }*/
 }
 
 /*function clearFilter() {
@@ -21,13 +14,24 @@ const ctx = {
 function showMenu(id, restName) {
     const rName = document.getElementById('restaurantName');
     rName.innerHTML="<h5>Меню ресторана " + restName + "</h5>";
+    restId = id;
+    restaurantName = restName;
 
     $.ajax({
         type: "GET",
         url: "rest/dishes/menu/" + id
     }).done(function (data) {
-        updateTableByData(data)
-    })
+        updateTableByData(data);
+    });
+}
+
+function vote() {
+    $.ajax({
+        type: "POST",
+        url: "rest/profile/votes/" + restId
+    }).done(function () {
+        successNoty("Вы проголосовали за ресторан " + restaurantName);
+    });
 }
 
 $(function () {
