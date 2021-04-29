@@ -1,55 +1,53 @@
-const dishAjaxUrl = "rest/dishes/";
+function makeEditableDish(datatableApi) {
+    ctx1.datatableApi = datatableApi;
+
+    // solve problem with cache in IE: https://stackoverflow.com/a/4303862/548473
+    $.ajaxSetup({cache: false});
+}
+
+const dishAjaxUrl = "rest/dishes/menu/";
 let restId;
 let restaurantName;
 // https://stackoverflow.com/a/5064235/548473
-const ctx = {
+const ctx1 = {
     ajaxUrl: dishAjaxUrl
 }
 
-/*function clearFilter() {
-    $("#filter")[0].reset();
-    $.get("profile/meals/", updateTableByData);
-}*/
+function updateTableByDataDish(data) {
+    ctx1.datatableApi.clear().rows.add(data).draw();
+}
 
 function showMenu(id, restName) {
-    const rName = document.getElementById('restaurantName');
-    rName.innerHTML="<h5>Меню ресторана " + restName + "</h5>";
+    $("#restaurantName").html(i18n["restMenu"] + " " + restName);
     restId = id;
     restaurantName = restName;
 
     $.ajax({
         type: "GET",
-        url: "rest/dishes/menu/" + id
+        url: dishAjaxUrl + id
     }).done(function (data) {
-        updateTableByData(data);
-    });
-}
-
-function vote() {
-    $.ajax({
-        type: "POST",
-        url: "rest/profile/votes/" + restId
-    }).done(function () {
-        successNoty("Вы проголосовали за ресторан " + restaurantName);
+        updateTableByDataDish(data);
     });
 }
 
 $(function () {
-    makeEditable(
+    makeEditableDish(
         $("#menuTable").DataTable({
             "ajax": {
-                "url": dishAjaxUrl + "/menu/emptyList",
+                "url": dishAjaxUrl + "emptyList",
                 "dataSrc": ""
             },
             "fnDrawCallback": function () {
                 if ($(this).find('.dataTables_empty').length === 1) {
                     $('th').hide();
                     $('#votingBtn').hide();
+                    $('#showVotes').hide();
                     $('.dataTables_empty').
                         html("<span class='label label-danger'><h5 align='center'>Please, choose restaurant</h5></span>");
                 } else {
                     $('th').show();
                     $('#votingBtn').show();
+                    $('#showVotes').show();
                 }
             },
             "paging": false,

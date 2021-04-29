@@ -18,16 +18,7 @@ VALUES ('Astoria', '2015-01-01'),
        ('France', '2015-03-01');
 
 INSERT INTO DISHES (NAME, PRICE, DATE, RESTAURANT_ID)
-VALUES ('Red soup', 200, now(), 6),
-       ('Greek salad', 150, now(), 6),
-       ('Lemon tea', 100, now(), 6),
-       ('Green soup', 200, now(), 7),
-       ('Fresh salad', 150, now(), 7),
-       ('Black coffee', 150, now(), 7),
-       ('Chicken soup', 200, now(), 8),
-       ('Carrot salad', 100, now(), 8),
-       ('Black tea', 100, now(), 8),
-       ('Red soup', 200, '2021-01-10', 6),
+VALUES ('Red soup', 200, '2021-01-10', 6),
        ('Greek salad', 150, '2021-01-10', 6),
        ('Lemon tea', 100, '2021-01-10', 6),
        ('Green soup', 200, '2021-01-10', 7),
@@ -35,13 +26,25 @@ VALUES ('Red soup', 200, now(), 6),
        ('Black coffee', 150, '2021-01-10', 7),
        ('Chicken soup', 200, '2021-01-10', 8),
        ('Carrot salad', 100, '2021-01-10', 8),
-       ('Black tea', 100, '2021-01-10', 8);
+       ('Black tea', 100, '2021-01-10', 8),
+       ('Red soup', 200, now(), 6),
+       ('Greek salad', 150, now(), 6),
+       ('Lemon tea', 100, now(), 6),
+       ('Green soup', 200, now(), 7),
+       ('Fresh salad', 150, now(), 7),
+       ('Black coffee', 150, now(), 7),
+       ('Chicken soup', 200, now(), 8),
+       ('Carrot salad', 100, now(), 8),
+       ('Black tea', 100, now(), 8);
 
 INSERT INTO VOTES (USER_ID, RESTAURANT_ID, DATE)
 VALUES (1, 6, '2021-01-10'),
        (2, 6, '2021-01-10'),
        (3, 7, '2021-01-10'),
-       (4, 8, '2021-01-10');
+       (4, 8, '2021-01-10'),
+       (2, 6, now()),
+       (3, 7, now()),
+       (4, 8, now());
 
 INSERT INTO user_roles (role, user_id)
 VALUES ('USER', 1),

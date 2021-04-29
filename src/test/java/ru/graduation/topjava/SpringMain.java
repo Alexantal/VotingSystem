@@ -22,7 +22,7 @@ public class SpringMain {
             voteRestController.createOrUpdate(7);
             voteRestController.createOrUpdate(6);
 
-            List<Vote> votes = voteRestController.getAll();
+            List<Vote> votes = voteRestController.getToday();
             votes.forEach(System.out::println);
 
             /*DishRestController dishRestController = appCtx.getBean(DishRestController.class);

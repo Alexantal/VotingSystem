@@ -29,4 +29,14 @@ public class VoteRestController extends AbstractVoteController {
     public List<Vote> getAll() {
         return super.getAll();
     }
+
+    @GetMapping(value = "/today")
+    public List<Vote> getToday() {
+        return super.getAllByDate(LocalDate.now());
+    }
+
+    @GetMapping(value = "/todayRating")
+    public List<Vote> getTodayRating() {
+        return null;
+    }
 }
