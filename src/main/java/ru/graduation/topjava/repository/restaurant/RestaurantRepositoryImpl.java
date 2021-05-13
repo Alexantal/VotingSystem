@@ -2,6 +2,7 @@ package ru.graduation.topjava.repository.restaurant;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.graduation.topjava.model.Restaurant;
 
 import java.util.List;
@@ -16,10 +17,10 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
         this.restaurantRepository = restaurantRepository;
     }
 
-
     @Override
+    @Transactional
     public Restaurant save(Restaurant restaurant) {
-        return null;
+        return restaurantRepository.save(restaurant);
     }
 
     @Override
@@ -29,7 +30,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
     public Restaurant get(int id) {
-        return null;
+        return restaurantRepository.findById(id).orElse(null);
     }
 
     @Override

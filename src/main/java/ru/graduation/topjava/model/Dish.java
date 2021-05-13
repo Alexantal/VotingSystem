@@ -22,7 +22,7 @@ public class Dish extends AbstractNamedEntity {
 
     @Column(name = "date", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
 
     public Dish() {
     }

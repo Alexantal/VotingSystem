@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.graduation.topjava.service.DishService;
+import ru.graduation.topjava.service.RestaurantService;
 import ru.graduation.topjava.service.UserService;
 import ru.graduation.topjava.service.VoteService;
 
@@ -16,8 +16,11 @@ public class RootController {
     @Autowired
     private UserService userService;
 
+//    @Autowired
+//    private VoteService voteService;
+
     @Autowired
-    private VoteService voteService;
+    private RestaurantService restService;
 
     @GetMapping("/")
     public String root() {
@@ -34,12 +37,18 @@ public class RootController {
     public String setUser(HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("userId"));
         SecurityUtil.setAuthUserId(userId);
-        return userService.isAdmin(userId) ? "redirect:dishes/edit" : "redirect:/menu";
+        return userService.isAdmin(userId) ? "restaurantForm" : "redirect:/menu";
     }
 
-    @GetMapping("/votes")
+    @GetMapping("/menu")
+    public String getMenu(Model model) {
+        model.addAttribute("restaurants", restService.getAll());
+        return "votingForm";
+    }
+
+    /*@GetMapping("/votes")
     public String getVotes(Model model) {
         model.addAttribute("votes", voteService.getAll());
         return "votes";
-    }
+    }*/
 }

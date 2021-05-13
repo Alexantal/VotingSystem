@@ -59,7 +59,7 @@ $(function () {
                 },
                 {
                     "data": "price"
-                },
+                }
             ],
             "order": [
                 [

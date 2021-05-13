@@ -15,19 +15,15 @@ dd {
     vertical-align: top;
 }
 
-tr[data-mealExcess="false"] {
-    color: green;
-}
-
-tr[data-mealExcess="true"] {
-    color: red;
+tr {
+    vertical-align: top;
 }
 
 #showVotes, #votingBtn {
     margin: 8px;
 }
 
-.btn {
+.btn, .fa {
     cursor: pointer;
 }
 

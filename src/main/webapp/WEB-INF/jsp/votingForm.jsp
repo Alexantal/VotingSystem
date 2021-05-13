@@ -7,7 +7,7 @@
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
 <script type="text/javascript" src="resources/js/common.js" defer></script>
-<script type="text/javascript" src="resources/js/dishes.js" defer></script>
+<script type="text/javascript" src="resources/js/user_dishes.js" defer></script>
 <script type="text/javascript" src="resources/js/votes.js" defer></script>
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
@@ -32,7 +32,7 @@
                         <table class="table table-striped" id="menuTable" width="70%">
                             <thead>
                             <tr>
-                                <th id="restaurantName">Text</th>
+                                <th id="restaurantName"></th>
                             </tr>
                             <tr>
                                 <th><spring:message code="dish.name"/></th>
@@ -89,6 +89,6 @@
 <jsp:include page="fragments/footer.jsp"/>
 </body>
 <jsp:include page="fragments/i18n.jsp">
-    <jsp:param name="page" value="votingForm"/>
+    <jsp:param name="page" value="dish"/>
 </jsp:include>
 </html>

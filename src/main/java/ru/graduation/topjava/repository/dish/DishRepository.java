@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DishRepository {
     // null if not found, when updated
-    Dish save(Dish dish);
+    Dish save(Dish dish, int restId);
 
     // false if not found
     boolean delete(int id);
@@ -20,6 +20,10 @@ public interface DishRepository {
     List<Dish> getByDate(Date date);
 
     List<Dish> getAll();
+
+    Dish getByIdAndRestId(int id, int restId);
+
+    List<Dish> getLastDateRestaurantMenu(int rest_id);
 
     List<Dish> getRestaurantMenu(int rest_id, LocalDate date);
 }
