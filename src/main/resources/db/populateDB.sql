@@ -6,11 +6,11 @@ DELETE FROM USERS;
 ALTER SEQUENCE global_seq RESTART WITH 1;
 
 INSERT INTO USERS (NAME, EMAIL, PASSWORD, REGISTERED)
-VALUES ('User1', 'user1@yandex.ru', 'password', '2021-01-10'),
-       ('User2', 'user2@yandex.ru', 'password', '2021-01-10'),
-       ('User3', 'user3@yandex.ru', 'password', '2021-01-10'),
-       ('User4', 'user4@yandex.ru', 'password', '2021-01-10'),
-       ('Admin', 'admin@gmail.com', 'admin', '2021-01-10');
+VALUES ('User1', 'user1@yandex.ru', '{noop}password', '2021-01-10'),
+       ('User2', 'user2@yandex.ru', '{noop}password', '2021-01-10'),
+       ('User3', 'user3@yandex.ru', '{noop}password', '2021-01-10'),
+       ('User4', 'user4@yandex.ru', '{noop}password', '2021-01-10'),
+       ('Admin', 'admin@gmail.com', '{noop}admin', '2021-01-10');
 
 INSERT INTO RESTAURANTS (NAME, REGISTERED)
 VALUES ('Astoria', '2015-01-01'),
