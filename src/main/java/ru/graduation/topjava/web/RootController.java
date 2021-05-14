@@ -24,7 +24,12 @@ public class RootController {
 
     @GetMapping("/")
     public String root() {
-        return "index";
+        return "redirect:/user";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @GetMapping("/users")
@@ -37,18 +42,17 @@ public class RootController {
     public String setUser(HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("userId"));
         SecurityUtil.setAuthUserId(userId);
-        return userService.isAdmin(userId) ? "restaurantForm" : "redirect:/menu";
+        return userService.isAdmin(userId) ? "redirect:/admin" : "redirect:/user";
     }
 
-    @GetMapping("/menu")
+    @GetMapping("/user")
     public String getMenu(Model model) {
         model.addAttribute("restaurants", restService.getAll());
         return "votingForm";
     }
 
-    /*@GetMapping("/votes")
-    public String getVotes(Model model) {
-        model.addAttribute("votes", voteService.getAll());
-        return "votes";
-    }*/
+    @GetMapping("/admin")
+    public String adminForm() {
+        return "restaurantForm";
+    }
 }
