@@ -38,12 +38,12 @@ public class RootController {
         return "users";
     }
 
-    @PostMapping("/users")
+    /*@PostMapping("/users")
     public String setUser(HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("userId"));
         SecurityUtil.setAuthUserId(userId);
         return userService.isAdmin(userId) ? "redirect:/admin" : "redirect:/user";
-    }
+    }*/
 
     @GetMapping("/user")
     public String getMenu(Model model) {

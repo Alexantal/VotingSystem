@@ -2,6 +2,7 @@ package ru.graduation.topjava.model;
 
 import org.hibernate.annotations.BatchSize;
 import org.springframework.util.CollectionUtils;
+import ru.graduation.topjava.HasIdAndEmail;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,7 +12,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
-public class User extends AbstractEnabledEntity {
+public class User extends AbstractEnabledEntity implements HasIdAndEmail {
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
