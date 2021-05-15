@@ -22,6 +22,7 @@
 
     <logger name="ru.votingsystem.topjava" level="debug"/>
     <logger name="org.springframework.web.servlet" level="debug"/>
+    <logger name="org.springframework.security.web.csrf.CsrfFilter" level="debug"/>
 
     <root level="info">
         <appender-ref ref="file"/>

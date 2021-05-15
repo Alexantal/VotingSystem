@@ -6,7 +6,7 @@ DELETE FROM USERS;
 ALTER SEQUENCE global_seq RESTART WITH 1;
 
 INSERT INTO USERS (NAME, EMAIL, PASSWORD, REGISTERED)
-VALUES ('User1', 'user1@yandex.ru', '{noop}password', '2021-01-10'),
+VALUES ('User', 'user@yandex.ru', '{noop}password', '2021-01-10'),
        ('User2', 'user2@yandex.ru', '{noop}password', '2021-01-10'),
        ('User3', 'user3@yandex.ru', '{noop}password', '2021-01-10'),
        ('User4', 'user4@yandex.ru', '{noop}password', '2021-01-10'),
