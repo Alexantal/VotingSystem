@@ -2,9 +2,12 @@ package ru.graduation.topjava.web.vote;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.graduation.topjava.model.Vote;
 
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,16 +16,27 @@ import java.util.List;
 public class VoteRestController extends AbstractVoteController {
     public static final String REST_URL = "/rest/profile/votes";
 
-    @PostMapping(value = "/{restId}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void createOrUpdate(@PathVariable int restId) {
-        Vote created = super.getOneByDate(LocalDate.now());
+    @PostMapping("/{restId}")
+    public ResponseEntity<Vote> createWithLocation(@PathVariable int restId) {
+        Vote created = super.create(restId);
+        URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path(REST_URL + "/{id}")
+                .buildAndExpand(created.getId()).toUri();
+        return ResponseEntity.created(uriOfNewResource).body(created);
+    }
 
-        if (created == null) {
-            super.create(restId);
-        } else {
+    @PutMapping("/{id}/{restId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable int id, @PathVariable int restId) {
+        Vote created = super.get(id);
+        if (super.get(id) != null) {
             super.update(created, restId);
         }
+    }
+
+    @GetMapping("/{id}")
+    public Vote get(@PathVariable int id) {
+        return super.get(id);
     }
 
     @GetMapping
@@ -30,13 +44,8 @@ public class VoteRestController extends AbstractVoteController {
         return super.getAll();
     }
 
-    @GetMapping(value = "/today")
+    @GetMapping("/today")
     public List<Vote> getToday() {
         return super.getAllByDate(LocalDate.now());
-    }
-
-    @GetMapping(value = "/todayRating")
-    public List<Vote> getTodayRating() {
-        return null;
     }
 }

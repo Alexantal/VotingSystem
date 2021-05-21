@@ -5,7 +5,7 @@ function makeEditableVote(datatableApi) {
     $.ajaxSetup({cache: false});
 }
 
-const voteAjaxUrl = "rest/profile/votes/";
+const voteAjaxUrl = "profile/votes/";
 
 const ctx2 = {
     ajaxUrl: voteAjaxUrl,

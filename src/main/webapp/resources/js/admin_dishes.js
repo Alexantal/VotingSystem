@@ -1,4 +1,4 @@
-const adminDishAjaxUrl = "rest/admin/dishes/";
+const adminDishAjaxUrl = "admin/dishes/";
 let dishForm;
 let restaurantId;
 const dishCtx = {

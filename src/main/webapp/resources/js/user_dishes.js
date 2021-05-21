@@ -11,7 +11,7 @@ function makeEditableDish(datatableApi) {
     });
 }
 
-const dishAjaxUrl = "rest/dishes/menu/";
+const dishAjaxUrl = "profile/dishes/menu/";
 let restId;
 let restaurantName;
 // https://stackoverflow.com/a/5064235/548473

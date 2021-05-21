@@ -1,4 +1,4 @@
-const restAjaxUrl = "rest/admin/restaurants/";
+const restAjaxUrl = "admin/restaurants/";
 let form;
 
 const restCtx = {

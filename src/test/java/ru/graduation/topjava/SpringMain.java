@@ -3,11 +3,8 @@ package ru.graduation.topjava;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.graduation.topjava.model.Dish;
-import ru.graduation.topjava.model.Vote;
-import ru.graduation.topjava.web.AdminDishController;
-import ru.graduation.topjava.web.vote.VoteRestController;
+import ru.graduation.topjava.web.dish.AdminDishUIController;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,20 +12,20 @@ public class SpringMain {
     public static void main(String[] args) {
         try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext(
                 "spring/spring-db.xml", "spring/spring-app.xml", "spring/spring-mvc.xml")) {
-            System.out.println("\n----------------------------------------------");
-            System.out.println("Bean definition names: ");
-            Arrays.stream(appCtx.getBeanDefinitionNames()).forEach(System.out::println);
-            System.out.println("----------------------------------------------\n");
+//            System.out.println("\n----------------------------------------------");
+//            System.out.println("Bean definition names: ");
+//            Arrays.stream(appCtx.getBeanDefinitionNames()).forEach(System.out::println);
+//            System.out.println("----------------------------------------------\n");
 
-            AdminDishController adminDishController = appCtx.getBean(AdminDishController.class);
-            List<Dish>  dishes = adminDishController.getLastMenu(8);
+//            AdminDishUIController adminDishUIController = appCtx.getBean(AdminDishUIController.class);
+//            List<Dish>  dishes = adminDishUIController.getLastMenu(8);
 
-            dishes.forEach(System.out::println);
+//            dishes.forEach(System.out::println);
 
 //            adminDishController.createOrUpdate(new Dish(null, "test1", 200, LocalDate.now()), 8);
 //            adminDishController.createOrUpdate(new Dish(null, "test2", 250, LocalDate.now()), 8);
-            dishes = adminDishController.getLastMenu(8);
-            dishes.forEach(System.out::println);
+//            dishes = adminDishUIController.getLastMenu(8);
+//            dishes.forEach(System.out::println);
 
             /*VoteRestController voteRestController = appCtx.getBean(VoteRestController.class);
             voteRestController.createOrUpdate(7);

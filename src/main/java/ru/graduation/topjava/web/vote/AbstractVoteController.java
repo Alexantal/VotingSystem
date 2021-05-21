@@ -18,10 +18,10 @@ public abstract class AbstractVoteController {
     @Autowired
     private VoteService service;
 
-    public void create(int restId) {
+    public Vote create(int restId) {
         int userId = SecurityUtil.authUserId();
         log.info("create new vote for user {}", userId);
-        service.create(new Vote(null, LocalDate.now()), userId, restId);
+        return service.create(new Vote(null, LocalDate.now()), userId, restId);
     }
 
     public void update(Vote vote, int restId) {
