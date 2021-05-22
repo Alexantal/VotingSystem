@@ -24,11 +24,10 @@ The regular and admin users are pre-added in an application database.
 
 To start using the application you need:
 1. Save project from GitHub in the path: C:/Projects/VotingSystem;
-2. Create new System environment VOTING_SYSTEM_ROOT in the path: C:/Projects/VotingSystem;
-3. Run Tomcat Server with url http://localhost:8080/votingsystem/ and with
+2. Run Tomcat Server with url http://localhost:8080/votingsystem/ and with
    Deployment#Application context: /votingsystem;
-4. Launch your web browser in url http://localhost:8080/votingsystem/;
-5. Login as admin or user.
+3. Launch your web browser in url http://localhost:8080/votingsystem/;
+4. Login as admin or user.
 
 Admin email: admin@gmail.com | password: admin
 
