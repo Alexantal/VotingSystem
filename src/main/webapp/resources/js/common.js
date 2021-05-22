@@ -33,3 +33,14 @@ function successNoty(key, note) {
         timeout: 2000
     }).show();
 }
+
+function failNoty(jqXHR) {
+    closeNoty();
+    var errorInfo = jqXHR.responseJSON;
+    failedNote = new Noty({
+        text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + errorInfo.typeMessage + "<br>" + errorInfo.details.join("<br>"),
+        type: "error",
+        layout: "bottomRight"
+    });
+    failedNote.show();
+}

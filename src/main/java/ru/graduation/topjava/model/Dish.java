@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Dish extends AbstractNamedEntity {
 
     @Column(name = "price", nullable = false)
-    @Range(min = 10, max = 5000)
+    @Range(min = 10, max = 500000)
     private Integer price;
 
     @ManyToOne(fetch = FetchType.EAGER)

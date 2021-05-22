@@ -9,7 +9,10 @@ import ru.graduation.topjava.model.Vote;
 
 import java.net.URI;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+
+import static ru.graduation.topjava.util.DateTimeUtil.canChangeVote;
 
 @RestController
 @RequestMapping(value = VoteRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -29,7 +32,7 @@ public class VoteRestController extends AbstractVoteController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable int id, @PathVariable int restId) {
         Vote created = super.get(id);
-        if (super.get(id) != null) {
+        if (super.get(id) != null && canChangeVote(LocalTime.now())) {
             super.update(created, restId);
         }
     }
